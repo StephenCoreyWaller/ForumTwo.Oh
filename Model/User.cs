@@ -1,0 +1,31 @@
+/*
+    Model for user profile
+*/
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+namespace ForumTwo.Oh.Model
+{
+    public class User
+    { 
+        public int Id { get; set; }
+        [Required]
+        public string UserName { get; set; }
+        public string LName { get; set; }    
+        public string FName { get; set; } 
+        public string About { get; set; }
+        [Required]
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; } 
+        public string Company { get; set; }
+        public bool Recruiting { get; set; }
+        public DateTime DateCreated { get; set; }
+        public List<Post> Posts { get; set; }
+        public List<Thread> Threads { get; set; }
+        public User(){
+
+            this.DateCreated = DateTime.Now; 
+        } 
+    }
+}
