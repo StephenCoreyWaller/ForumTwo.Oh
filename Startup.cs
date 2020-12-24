@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using ForumTwo.Oh.Data;
+using ForumTwo.Oh.Services.User;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,7 +32,8 @@ namespace ForumTwo.Oh
             services.AddDbContext<DataContext>(
                 options => options.UseSqlServer(
                     Configuration.GetConnectionString("WebForumConnection"))); 
-            
+            services.AddScoped<IUserService, UserService>(); 
+            services.AddAutoMapper(typeof(Startup)); 
             services.AddControllers();
         }
 

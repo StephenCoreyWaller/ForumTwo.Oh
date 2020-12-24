@@ -1,0 +1,19 @@
+button {
+	margin: 5px 5px;
+	width: 5em;
+}
+.darkest {
+	background-color: #051821;
+}
+.darker {
+	background-color: #1a4645;
+}
+.darker-lighter {
+	background-color: #266867;
+}
+.lighter-darker {
+	background-color: #f58800;
+}
+.lighter {
+	background-color: #f8bc24;
+}
