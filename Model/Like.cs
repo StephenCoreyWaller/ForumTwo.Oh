@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace ForumTwo.Oh.Model
+namespace ForumTwo.Model
 {
     public enum TypeOfLike{
         Happy, 

@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace ForumTwo.Oh.Model
+namespace ForumTwo.Model
 {
     public class User
     { 

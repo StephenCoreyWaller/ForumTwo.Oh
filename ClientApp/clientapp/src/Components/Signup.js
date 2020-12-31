@@ -1,11 +1,18 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
-const SignupButton = () => {
-	const { loginWithRedirect } = useAuth0();
+const Signup = () => {
+	const { user, loginWithRedirect } = useAuth0();
+
+	// const createUser = async () => {
+	// 	const response = await AxiosRequest.post('/UserAuth', {
+
+	// 	});
+	// };
+	console.log(user);
 	return (
 		<button
-			className='btn btn-primary btn-block'
+			className='ui positive basic button'
 			onClick={() =>
 				loginWithRedirect({
 					screen_hint: 'signup',
@@ -17,4 +24,4 @@ const SignupButton = () => {
 	);
 };
 
-export default SignupButton;
+export default Signup;

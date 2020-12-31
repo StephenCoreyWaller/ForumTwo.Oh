@@ -1,4 +1,4 @@
-namespace ForumTwo.Oh.Model
+namespace ForumTwo.Model
 {
     public class ServiceResponse <T>
     {

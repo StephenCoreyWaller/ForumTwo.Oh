@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using ForumTwo.Oh.DTOs;
-using ForumTwo.Oh.Model;
+using ForumTwo.DTOs;
+using ForumTwo.Model;
 
-namespace ForumTwo.Oh.Services.User
+namespace ForumTwo.Services.UserServices
 {
     public interface IUserService
     {

@@ -1,8 +1,8 @@
 //Context for data models 
-using ForumTwo.Oh.Model;
+using ForumTwo.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace ForumTwo.Oh.Data
+namespace ForumTwo.Data
 {
     public class DataContext : DbContext
     {

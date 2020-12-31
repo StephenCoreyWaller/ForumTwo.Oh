@@ -1,8 +1,8 @@
 using AutoMapper;
-using ForumTwo.Oh.DTOs;
-using ForumTwo.Oh.Model;
+using ForumTwo.DTOs;
+using ForumTwo.Model;
 
-namespace ForumTwo.Oh
+namespace ForumTwo
 {
     public class AutoMapperProfile : Profile
     {

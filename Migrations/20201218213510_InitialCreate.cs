@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ForumTwo.Oh.Migrations
+namespace ForumTwo.Migrations
 {
     public partial class InitialCreate : Migration
     {

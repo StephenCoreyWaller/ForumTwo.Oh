@@ -1,13 +1,24 @@
+using System.Linq;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Threading.Tasks.Dataflow;
+using System.Net;
 using System.Threading.Tasks;
-using ForumTwo.Oh.Data;
-using ForumTwo.Oh.DTOs;
-using ForumTwo.Oh.Model;
-using ForumTwo.Oh.Services.User;
+using ForumTwo.Data;
+using ForumTwo.DTOs;
+using ForumTwo.Model;
+using ForumTwo.Services.UserServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
+using System; 
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
-namespace ForumTwo.Oh.Controllers
-{
+
+namespace ForumTwo.Controllers
+{   
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class UserAuthController : ControllerBase
@@ -26,5 +37,12 @@ namespace ForumTwo.Oh.Controllers
 
             return Ok(response);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetUser(){
+            
+             
+            return Ok("test");
+        }
+        
     }
 }

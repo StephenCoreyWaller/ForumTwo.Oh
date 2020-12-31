@@ -1,15 +1,30 @@
-import react from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import react, { useState } from 'react';
 import AuthenticationButton from './AuthenticationButton';
+import Profile from './Profile';
+import Signup from './Signup';
 import './Components.css';
 
 const Nav = () => {
+	const { user } = useAuth0();
+
 	return (
-		<div>
-			<nav className='navbar-nav ml-auto'>
-				<div className='container-fluid'>
+		<div className='ui menu'>
+			<a href='ss' className='active item'>
+				Home
+			</a>
+			<a href='ss' className='item'>
+				Messages
+			</a>
+			<a href='ss' className='item'>
+				Friends
+			</a>
+			<div className='right menu'>
+				<Profile />
+				<div className='ui item'>
 					<AuthenticationButton />
 				</div>
-			</nav>
+			</div>
 		</div>
 	);
 };

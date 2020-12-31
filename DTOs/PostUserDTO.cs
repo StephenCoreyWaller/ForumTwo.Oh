@@ -1,4 +1,4 @@
-namespace ForumTwo.Oh.DTOs
+namespace ForumTwo.DTOs
 {
     public class PostUserDTO
     {
