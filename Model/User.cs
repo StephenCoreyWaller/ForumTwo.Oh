@@ -13,20 +13,17 @@ namespace ForumTwo.Model
         [Required]
         public string Auth { get; set; }
         public string UserName { get; set; } = "anonymous"; 
-        public string LName { get; set; }    
-        public string FName { get; set; } 
-        public string About { get; set; }
+        public string LName { get; set; } = "";
+        public string FName { get; set; } = ""; 
+        public string About { get; set; } = ""; 
         [Required]
         public string Email { get; set; }
-        public string PhoneNumber { get; set; } 
+        public string PhoneNumber { get; set; } = ""; 
         public string Company { get; set; }
         public bool Recruiting { get; set; }
-        public DateTime DateCreated { get; set; }
+        public DateTime DateCreated { get; set; } = DateTime.Now;
         public List<Post> Posts { get; set; }
         public List<Thread> Threads { get; set; }
-        public User(){
-
-            this.DateCreated = DateTime.Now; 
-        } 
+    
     }
 }
