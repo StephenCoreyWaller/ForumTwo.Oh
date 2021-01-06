@@ -20,6 +20,7 @@ const Nav = () => {
 				Friends
 			</a>
 			<div className='right menu'>
+				<Signup />
 				<Profile />
 				<div className='ui item'>
 					<AuthenticationButton />

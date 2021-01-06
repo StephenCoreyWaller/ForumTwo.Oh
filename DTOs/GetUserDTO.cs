@@ -11,5 +11,7 @@ namespace ForumTwo.DTOs
         public string PhoneNumber { get; set; } 
         public string Company { get; set; }
         public bool Recruiting { get; set; }
+        public string Auth { get; set; }
+    
     }
 }

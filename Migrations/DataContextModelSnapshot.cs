@@ -19,7 +19,7 @@ namespace ForumTwo.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ForumTwo.Oh.Model.Category", b =>
+            modelBuilder.Entity("ForumTwo.Model.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -35,7 +35,7 @@ namespace ForumTwo.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("ForumTwo.Oh.Model.Like", b =>
+            modelBuilder.Entity("ForumTwo.Model.Like", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +63,7 @@ namespace ForumTwo.Migrations
                     b.ToTable("Likes");
                 });
 
-            modelBuilder.Entity("ForumTwo.Oh.Model.Post", b =>
+            modelBuilder.Entity("ForumTwo.Model.Post", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -97,7 +97,7 @@ namespace ForumTwo.Migrations
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("ForumTwo.Oh.Model.Thread", b =>
+            modelBuilder.Entity("ForumTwo.Model.Thread", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -126,7 +126,7 @@ namespace ForumTwo.Migrations
                     b.ToTable("Threads");
                 });
 
-            modelBuilder.Entity("ForumTwo.Oh.Model.User", b =>
+            modelBuilder.Entity("ForumTwo.Model.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -134,6 +134,10 @@ namespace ForumTwo.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("About")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Auth")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Company")
@@ -159,7 +163,6 @@ namespace ForumTwo.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
@@ -172,44 +175,45 @@ namespace ForumTwo.Migrations
                         .HasFilter("[PhoneNumber] IS NOT NULL");
 
                     b.HasIndex("UserName")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[UserName] IS NOT NULL");
 
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("ForumTwo.Oh.Model.Like", b =>
+            modelBuilder.Entity("ForumTwo.Model.Like", b =>
                 {
-                    b.HasOne("ForumTwo.Oh.Model.Post", null)
+                    b.HasOne("ForumTwo.Model.Post", null)
                         .WithMany("Likes")
                         .HasForeignKey("PostId");
 
-                    b.HasOne("ForumTwo.Oh.Model.User", "User")
+                    b.HasOne("ForumTwo.Model.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("ForumTwo.Oh.Model.Post", b =>
+            modelBuilder.Entity("ForumTwo.Model.Post", b =>
                 {
-                    b.HasOne("ForumTwo.Oh.Model.Post", "Parent")
+                    b.HasOne("ForumTwo.Model.Post", "Parent")
                         .WithMany()
                         .HasForeignKey("ParentId");
 
-                    b.HasOne("ForumTwo.Oh.Model.Thread", null)
+                    b.HasOne("ForumTwo.Model.Thread", null)
                         .WithMany("Posts")
                         .HasForeignKey("ThreadId");
 
-                    b.HasOne("ForumTwo.Oh.Model.User", "User")
+                    b.HasOne("ForumTwo.Model.User", "User")
                         .WithMany("Posts")
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("ForumTwo.Oh.Model.Thread", b =>
+            modelBuilder.Entity("ForumTwo.Model.Thread", b =>
                 {
-                    b.HasOne("ForumTwo.Oh.Model.Category", null)
+                    b.HasOne("ForumTwo.Model.Category", null)
                         .WithMany("Threads")
                         .HasForeignKey("CategoryId");
 
-                    b.HasOne("ForumTwo.Oh.Model.User", "User")
+                    b.HasOne("ForumTwo.Model.User", "User")
                         .WithMany("Threads")
                         .HasForeignKey("UserId");
                 });

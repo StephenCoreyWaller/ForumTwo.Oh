@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ForumTwo.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,7 +26,8 @@ namespace ForumTwo.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserName = table.Column<string>(nullable: false),
+                    Auth = table.Column<string>(nullable: false),
+                    UserName = table.Column<string>(nullable: true),
                     LName = table.Column<string>(nullable: true),
                     FName = table.Column<string>(nullable: true),
                     About = table.Column<string>(nullable: true),
@@ -184,7 +185,8 @@ namespace ForumTwo.Migrations
                 name: "IX_Users_UserName",
                 table: "Users",
                 column: "UserName",
-                unique: true);
+                unique: true,
+                filter: "[UserName] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

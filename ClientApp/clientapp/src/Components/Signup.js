@@ -1,22 +1,21 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import Request from './AxiosRequest';
 
 const Signup = () => {
-	const { user, loginWithRedirect } = useAuth0();
+	const { getAccessTokenSilently, loginWithRedirect } = useAuth0();
 
-	// const createUser = async () => {
-	// 	const response = await AxiosRequest.post('/UserAuth', {
-
-	// 	});
-	// };
-	console.log(user);
 	return (
 		<button
 			className='ui positive basic button'
 			onClick={() =>
-				loginWithRedirect({
-					screen_hint: 'signup',
-				})
+				loginWithRedirect(
+					Request.get('/UserAuth', {
+						headers: {
+							Authorization: `Bearer ${getAccessTokenSilently()}`,
+						},
+					})
+				)
 			}
 		>
 			Sign Up

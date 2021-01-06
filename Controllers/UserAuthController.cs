@@ -1,4 +1,5 @@
-using System.Linq;
+using System.Security.Principal;
+using System.Net.Cache;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Threading.Tasks.Dataflow;
@@ -16,6 +17,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 
 
+
 namespace ForumTwo.Controllers
 {   
     [Authorize]
@@ -31,18 +33,12 @@ namespace ForumTwo.Controllers
             _context = context;
         }
         [HttpPost]
-        public async Task<IActionResult> CreateUser(PostUserDTO user)
+        public async Task<IActionResult> CreateUser(PostUserDTO newUser)
         {
-            ServiceResponse<GetUserDTO> response = await _userService.CreateUser(user); 
-
-            return Ok(response);
-        }
-        [HttpGet]
-        public async Task<IActionResult> GetUser(){
-            
-             
-            return Ok("test");
-        }
-        
+            Console.WriteLine("authorization took place ..../////////////////........././/////////");
+            ServiceResponse<GetUserDTO> response = await _userService.CreateUser(newUser); 
+            return response.ReturnResult();
+             return Ok(); 
+        } 
     }
 }

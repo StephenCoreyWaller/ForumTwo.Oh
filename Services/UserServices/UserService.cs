@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using AutoMapper;
 using ForumTwo.Data;
@@ -16,10 +17,21 @@ namespace ForumTwo.Services.UserServices
             _mapper = mapper;
             _context = context;
         }
-        public async Task<ServiceResponse<GetUserDTO>> CreateUser(PostUserDTO user)
+        public async Task<ServiceResponse<GetUserDTO>> CreateUser(PostUserDTO newUser)
         {
             ServiceResponse<GetUserDTO> response = new ServiceResponse<GetUserDTO>();
-            response.Data = _mapper.Map<GetUserDTO>(await _context.Users.AddAsync(_mapper.Map<User>(user))); 
+
+            try{
+                var user = await _context.Users.AddAsync(_mapper.Map<User>(newUser)); 
+                await _context.SaveChangesAsync();
+                response.Data = _mapper.Map<GetUserDTO>(user.Entity);
+
+            }catch(Exception ex){
+
+                response.Message = ex.Message; 
+                response.Success = false; 
+                response.ResultStatusCode = StatusCode.UnprocessableEntity; 
+            }
             return response; 
         }
     }

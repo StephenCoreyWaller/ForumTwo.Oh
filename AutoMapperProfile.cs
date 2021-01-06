@@ -9,6 +9,7 @@ namespace ForumTwo
         public AutoMapperProfile()
         {
             CreateMap<PostUserDTO, User>(); 
+            CreateMap<User, GetUserDTO>();  
         }
     }
 }

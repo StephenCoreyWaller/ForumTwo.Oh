@@ -9,7 +9,7 @@ const Profile = () => {
 	if (user === '') {
 		return <div></div>;
 	}
-	console.log(user);
+
 	return (
 		<div>
 			<a href=''>
