@@ -1,7 +1,8 @@
 import React from 'react';
+import { Loader } from 'semantic-ui-react';
 
 const IsLoading = () => {
-	return <div>Loading...</div>;
+	return <Loader active></Loader>;
 };
 
 export default IsLoading;
