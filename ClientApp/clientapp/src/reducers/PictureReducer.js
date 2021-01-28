@@ -1,7 +1,7 @@
 const PictureReducer = (state = null, action) => {
 	switch (action.type) {
 		case 'SET_PICTURE':
-			return action.payload;
+			return { ...state, picture: action.payload };
 		default:
 			return state;
 	}

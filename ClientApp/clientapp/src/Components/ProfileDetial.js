@@ -1,6 +1,6 @@
 import Request from './AxiosRequest';
 import { useState, useEffect } from 'react';
-import { Form, Grid, Segment, Button } from 'semantic-ui-react';
+import { Form, Grid, Segment, Button, Checkbox } from 'semantic-ui-react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useSelector } from 'react-redux';
 
@@ -100,14 +100,13 @@ const ProfileDetail = () => {
 							/>
 						</Grid.Column>
 						<Grid.Column width={5} style={{ paddingTop: '1.9em' }}>
-							<div className='ui toggle checkbox field'>
-								<input
+							<div>
+								<Checkbox
+									toggle
 									onChange={onClickHandler}
 									checked={data.recruiting || false}
-									type='checkbox'
-									name='recruiting'
+									label={'Recruiting'}
 								/>
-								<label>Recruiting</label>
 							</div>
 						</Grid.Column>
 					</Grid.Row>

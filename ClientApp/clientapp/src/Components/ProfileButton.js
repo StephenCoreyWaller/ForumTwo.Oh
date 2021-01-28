@@ -1,29 +1,23 @@
-import React, { useEffect } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
+import React from 'react';
 import { Popup, Image } from 'semantic-ui-react';
 import ProfileCard from './ProfileCard';
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import Login from './Login';
 
 const ProfileButton = () => {
-	const { user } = useAuth0();
-	const { picture } = user ? user : '';
-	const dispatch = useDispatch();
+	const { picture } = useSelector((state) => state.picture);
 
-	useEffect(() => {
-		if (picture !== null) {
-			dispatch({ type: 'SET_PICTURE', payload: picture });
-		}
-	}, [dispatch, picture]);
-
-	if (user === '') {
-		return <div></div>;
-	}
 	return (
 		<>
-			<Popup
-				trigger={<Image avatar fluid src={picture} />}
-				content={<ProfileCard />}
-			/>
+			{picture !== '' ? (
+				<Popup
+					trigger={<Image avatar fluid src={picture} />}
+					content={<ProfileCard />}
+					on='click'
+				/>
+			) : (
+				<Login />
+			)}
 		</>
 	);
 };

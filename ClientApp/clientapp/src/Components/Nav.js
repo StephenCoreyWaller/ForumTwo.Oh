@@ -1,6 +1,7 @@
 import ProfileButton from './ProfileButton';
 import './Components.css';
 import { Menu } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const Nav = () => {
 	return (
