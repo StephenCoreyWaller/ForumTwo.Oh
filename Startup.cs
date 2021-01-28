@@ -36,7 +36,6 @@ namespace ForumTwo
                 opt.AddPolicy("Policy", policy => {
                     policy
                     .WithOrigins("http://localhost:3000")
-                    .SetIsOriginAllowed((host) => true)
                     .AllowAnyMethod()
                     .AllowAnyHeader();
                 });

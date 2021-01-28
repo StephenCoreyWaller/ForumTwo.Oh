@@ -32,7 +32,39 @@ namespace ForumTwo.Services.UserServices
                 response.Success = false; 
                 response.ResultStatusCode = StatusCode.UnprocessableEntity; 
             }
-            return response; 
+            return response;
+        }
+        public async Task<ServiceResponse<GetUserDTO>> GetUserProfile(string identifier){
+
+            ServiceResponse<GetUserDTO> response = new ServiceResponse<GetUserDTO>();
+
+            try{ 
+                response.Data = _mapper.Map<GetUserDTO>(await _context.Users.FirstAsync(u => u.Auth == identifier)); 
+            }
+            catch (Exception ex){
+
+                response.Message = ex.Message;
+                response.Success = false;
+                response.ResultStatusCode = StatusCode.UnprocessableEntity;
+
+            }
+            return response;
+        }
+        public async Task<ServiceResponse<GetUserDTO>> UpdateUserProfile(string identifier, PutUserDTO user)
+        {
+            ServiceResponse<GetUserDTO> resposne = new ServiceResponse<GetUserDTO>();
+
+            try{
+                User userInfo = await _context.Users.FirstOrDefaultAsync(u => u.Auth == identifier);
+                _mapper.Map(user, userInfo);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex){
+
+                resposne.Message = ex.Message;
+                resposne.Success = false;
+            }
+            return resposne; 
         }
     }
 }
