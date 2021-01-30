@@ -8,15 +8,11 @@ namespace ForumTwo.Model
     public class Post
     {
         public int Id { get; set; }
-        public DateTime DateCreated { get; set; }
+        public DateTime DateCreated { get; set; } = DateTime.Now;
         public User User { get; set; }    
         [Required]
         public string Content { get; set; }
         public Post Parent { get; set; }
         public List<Like> Likes { get; set; }
-        public Post(){
-            
-            this.DateCreated = DateTime.Now; 
-        }
     }
 }

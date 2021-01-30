@@ -12,7 +12,7 @@ namespace ForumTwo.Model
         public int Id { get; set; }
         [Required]
         public string Auth { get; set; }
-        public string UserName { get; set; } = "anonymous"; 
+        public string UserName { get; set; } = "anonymous";  
         public string LName { get; set; } = "";
         public string FName { get; set; } = ""; 
         public string About { get; set; } = ""; 

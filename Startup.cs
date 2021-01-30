@@ -17,6 +17,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens; 
 using System.IdentityModel.Tokens.Jwt;
+using ForumTwo.Services.PostService;
+using ForumTwo.Services.CategoryService;
 
 namespace ForumTwo
 {
@@ -50,8 +52,10 @@ namespace ForumTwo
             
             services.AddDbContext<DataContext>(
                 options => options.UseSqlServer(
-                    Configuration.GetConnectionString("WebForumConnection"))); 
-            services.AddScoped<IUserService, UserService>(); 
+                    Configuration.GetConnectionString("WebForumConnection")));
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IPostService, PostService>();
+            services.AddScoped<ICategoryService, CategoryService>(); 
             services.AddAutoMapper(typeof(Startup)); 
             services.AddControllers();
         }

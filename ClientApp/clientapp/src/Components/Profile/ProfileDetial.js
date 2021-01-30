@@ -1,6 +1,14 @@
-import Request from './AxiosRequest';
+import Request from '../AxiosRequest';
 import { useState, useEffect } from 'react';
-import { Form, Grid, Segment, Button, Checkbox } from 'semantic-ui-react';
+import {
+	Form,
+	Grid,
+	Segment,
+	Button,
+	Checkbox,
+	Input,
+	TextArea,
+} from 'semantic-ui-react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useSelector } from 'react-redux';
 
@@ -39,8 +47,8 @@ const ProfileDetail = () => {
 				<Grid padded centered>
 					<Grid.Row>
 						<Grid.Column width={14}>
-							<label>User Name</label>
-							<input
+							<Form.Field
+								control={Input}
 								name='userName'
 								onChange={onChangeHandler}
 								value={data.userName || ''}
@@ -51,55 +59,60 @@ const ProfileDetail = () => {
 					</Grid.Row>
 					<Grid.Row>
 						<Grid.Column width={7}>
-							<label htmlFor=''>First Name</label>
-							<input
+							<Form.Field
+								control={Input}
 								name='fName'
 								onChange={onChangeHandler}
 								value={data.fName || ''}
 								type='text'
+								placeholder='First Name'
 							/>
 						</Grid.Column>
 						<Grid.Column width={7}>
-							<label htmlFor=''>Last Name</label>
-							<input
+							<Form.Field
+								control={Input}
 								name='lName'
 								onChange={onChangeHandler}
 								value={data.lName || ''}
 								type='text'
+								placeholder='Last Name'
 							/>
 						</Grid.Column>
 					</Grid.Row>
 					<Grid.Row>
 						<Grid.Column width={8}>
-							<label htmlFor=''>Email</label>
-							<input
+							<Form.Field
+								control={Input}
 								name='email'
 								onChange={onChangeHandler}
 								value={data.email || ''}
 								type='text'
+								placeholder='Email'
 							/>
 						</Grid.Column>
 						<Grid.Column width={6}>
-							<label htmlFor=''>Phone Number</label>
-							<input
+							<Form.Field
+								control={Input}
 								name='phoneNumber'
 								onChange={onChangeHandler}
 								value={data.phoneNumber || ''}
 								type='text'
+								placeholder='Phone Number'
 							/>
 						</Grid.Column>
 					</Grid.Row>
 					<Grid.Row>
 						<Grid.Column width={9}>
-							<label htmlFor=''>Company</label>
-							<input
+							<Form.Field
+								control={Input}
 								name='company'
 								onChange={onChangeHandler}
 								value={data.company || ''}
 								type='text'
+								placeholder='Company'
 							/>
 						</Grid.Column>
-						<Grid.Column width={5} style={{ paddingTop: '1.9em' }}>
+						<Grid.Column width={5} style={{ paddingTop: '1em' }}>
 							<div>
 								<Checkbox
 									toggle
@@ -112,12 +125,12 @@ const ProfileDetail = () => {
 					</Grid.Row>
 					<Grid.Row>
 						<Grid.Column width={14}>
-							<label htmlFor=''>About</label>
-							<textarea
+							<Form.Field
+								control={TextArea}
 								name='about'
 								onChange={onChangeHandler}
 								value={data.about || ''}
-							></textarea>
+							/>
 						</Grid.Column>
 					</Grid.Row>
 					<Button color='green'>Submit</Button>

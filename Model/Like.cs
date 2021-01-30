@@ -18,11 +18,7 @@ namespace ForumTwo.Model
         public int Id { get; set; }
         [Required]
         public TypeOfLike Type { get; set; }
-        public DateTime DateCreated { get; set; }
+        public DateTime DateCreated { get; set; } = DateTime.Now;
         public User User { get; set; } 
-        public Like(){
-            
-            this.DateCreated = DateTime.Now; 
-        }
     }
 }
