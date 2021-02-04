@@ -14,5 +14,6 @@ namespace ForumTwo.Model
         public string Content { get; set; }
         public Post Parent { get; set; }
         public List<Like> Likes { get; set; }
+        public Thread Thread { get; set; }   
     }
 }

@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using ForumTwo.Data;
 using ForumTwo.DTOs;
 using ForumTwo.Model;
-using
+
 using Microsoft.EntityFrameworkCore;
 
 namespace ForumTwo.Services.CategoryService
@@ -12,17 +13,17 @@ namespace ForumTwo.Services.CategoryService
     public class CategoryService : ICategoryService
     {
         private readonly DataContext _context;
-        public CategoryService(DataContext _context)
+        private readonly IMapper _mapper;
+        public CategoryService(DataContext context, IMapper mapper)
         {
-            _context = _context;
+            _mapper = mapper;
+            _context = context;
         }
         public async Task<ServiceResponse<List<GetCategoryDTO>>> GetCategories()
         {
             ServiceResponse<List<GetCategoryDTO>> response = new ServiceResponse<List<GetCategoryDTO>>();
-            await _context.Categories.ToListAsync();
-            //Set up get category
-            //finish category controlloer and service
-            //Start front end 
+            response.Data = _mapper.Map<List<GetCategoryDTO>>(await _context.Categories.ToListAsync());
+            return response; 
         }
     }
 }

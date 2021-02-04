@@ -11,6 +11,8 @@ namespace ForumTwo
             CreateMap<PostUserDTO, User>();
             CreateMap<User, GetUserDTO>();
             CreateMap<PutUserDTO, User>();
+            CreateMap<Category, GetCategoryDTO>();
+            CreateMap<Thread, GetThreadDTO>();      
         }
     }
 }

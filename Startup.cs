@@ -19,6 +19,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using ForumTwo.Services.PostService;
 using ForumTwo.Services.CategoryService;
+using ForumTwo.Services.ThreadServices;
 
 namespace ForumTwo
 {
@@ -55,7 +56,8 @@ namespace ForumTwo
                     Configuration.GetConnectionString("WebForumConnection")));
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IPostService, PostService>();
-            services.AddScoped<ICategoryService, CategoryService>(); 
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IThreadService, ThreadService>();  
             services.AddAutoMapper(typeof(Startup)); 
             services.AddControllers();
         }

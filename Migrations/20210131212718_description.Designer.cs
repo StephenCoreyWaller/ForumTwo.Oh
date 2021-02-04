@@ -4,14 +4,16 @@ using ForumTwo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ForumTwo.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210131212718_description")]
+    partial class description
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,9 +56,6 @@ namespace ForumTwo.Migrations
                     b.Property<int?>("PostId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ThreadId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
@@ -66,8 +65,6 @@ namespace ForumTwo.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("PostId");
-
-                    b.HasIndex("ThreadId");
 
                     b.HasIndex("UserId");
 
@@ -194,13 +191,9 @@ namespace ForumTwo.Migrations
 
             modelBuilder.Entity("ForumTwo.Model.Like", b =>
                 {
-                    b.HasOne("ForumTwo.Model.Post", "Post")
+                    b.HasOne("ForumTwo.Model.Post", null)
                         .WithMany("Likes")
                         .HasForeignKey("PostId");
-
-                    b.HasOne("ForumTwo.Model.Thread", "Thread")
-                        .WithMany()
-                        .HasForeignKey("ThreadId");
 
                     b.HasOne("ForumTwo.Model.User", "User")
                         .WithMany()
@@ -213,7 +206,7 @@ namespace ForumTwo.Migrations
                         .WithMany()
                         .HasForeignKey("ParentId");
 
-                    b.HasOne("ForumTwo.Model.Thread", "Thread")
+                    b.HasOne("ForumTwo.Model.Thread", null)
                         .WithMany("Posts")
                         .HasForeignKey("ThreadId");
 
@@ -224,7 +217,7 @@ namespace ForumTwo.Migrations
 
             modelBuilder.Entity("ForumTwo.Model.Thread", b =>
                 {
-                    b.HasOne("ForumTwo.Model.Category", "Category")
+                    b.HasOne("ForumTwo.Model.Category", null)
                         .WithMany("Threads")
                         .HasForeignKey("CategoryId");
 

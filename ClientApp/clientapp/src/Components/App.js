@@ -8,7 +8,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../action';
 import { BrowserRouter, Route } from 'react-router-dom';
-import RenderPosts from './Posts/RenderPosts';
+import CategoryView from './Category/CategoryView';
+import ThreadView from './Threads/ThreadView';
 
 const App = () => {
 	const { isAuthenticated, isLoading, getAccessTokenSilently } = useAuth0();
@@ -27,7 +28,7 @@ const App = () => {
 	}
 
 	return (
-		<>
+		<Container>
 			<BrowserRouter>
 				<Nav />
 				<Container>
@@ -35,12 +36,13 @@ const App = () => {
 						<div>
 							<Route path='/' exact />
 							<Route path='/EditProfile' component={ProfileDetail} />
-							<Route path='/Forum' component={RenderPosts} />
+							<Route path='/Forum' component={CategoryView} />
+							<Route path='/Category/:id' component={ThreadView} />
 						</div>
 					</div>
 				</Container>
 			</BrowserRouter>
-		</>
+		</Container>
 	);
 };
 export default App;

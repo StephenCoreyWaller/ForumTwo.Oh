@@ -20,5 +20,13 @@ export const GetRequestWithBearer = async (path, token) => {
 		console.log(e.message);
 	}
 };
+export const GetRequest = async (path) => {
+	try {
+		const resp = await Axios.get(`http://localhost:5000/${path}`);
+		return resp;
+	} catch (e) {
+		console.log(e.message);
+	}
+};
 
 export default Axios;

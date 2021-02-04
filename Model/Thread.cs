@@ -13,5 +13,8 @@ namespace ForumTwo.Model
         public DateTime DateCreated { get; set; } = DateTime.Now;
         public User User { get; set; }
         public List<Post> Posts { get; set; }
+        public Category Category { get; set; }
+        
+        
     }
 }

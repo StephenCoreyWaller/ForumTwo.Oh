@@ -20,5 +20,7 @@ namespace ForumTwo.Model
         public TypeOfLike Type { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.Now;
         public User User { get; set; } 
+        public Thread Thread { get; set; }
+        public Post Post { get; set; }
     }
 }

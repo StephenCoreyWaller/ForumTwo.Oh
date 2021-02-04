@@ -15,5 +15,7 @@ namespace ForumTwo.Model
         public string Title { get; set; }
         public List<Thread> Threads { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.Now;
+        public string Description { get; set; }
+        
     }
 }
