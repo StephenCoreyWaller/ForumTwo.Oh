@@ -22,7 +22,7 @@ namespace ForumTwo.Services.ThreadServices
         public async Task<ServiceResponse<List<GetThreadDTO>>> GetThreads(int id)
         {
             ServiceResponse<List<GetThreadDTO>> response = new ServiceResponse<List<GetThreadDTO>>();
-            response.Data = await _context.Threads.Where(c => c.Category.Id == id)
+            response.Data = await _context.Threads.Include(p => p.User).Where(c => c.Category.Id == id)
                 .Select(t => _mapper.Map<GetThreadDTO>(t)).ToListAsync();
             return response; 
         }
@@ -40,7 +40,5 @@ namespace ForumTwo.Services.ThreadServices
             response.Data = _mapper.Map<GetThreadDTO>(createdThread.Entity);
             return response; 
         }
-
-
     }
 }

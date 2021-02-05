@@ -12,7 +12,9 @@ namespace ForumTwo
             CreateMap<User, GetUserDTO>();
             CreateMap<PutUserDTO, User>();
             CreateMap<Category, GetCategoryDTO>();
-            CreateMap<Thread, GetThreadDTO>();      
+            CreateMap<Thread, GetThreadDTO>().ForMember(getThread => getThread.User,
+                User => User.MapFrom(u => u.User.UserName)).ForMember(getThread => getThread.List,
+                Posts => Posts.MapFrom(p => p.Posts.Count));      
         }
     }
 }

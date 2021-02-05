@@ -28,5 +28,17 @@ export const GetRequest = async (path) => {
 		console.log(e.message);
 	}
 };
+export const PostRequest = async (path, token, data) => {
+	try {
+		const resp = await Axios.post(`http://localhost:5000/${path}`, data, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		});
+		return resp;
+	} catch (e) {
+		console.log(e.message);
+	}
+};
 
 export default Axios;

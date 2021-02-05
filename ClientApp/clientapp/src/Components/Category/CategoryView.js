@@ -9,12 +9,14 @@ const CategoryView = () => {
 
 	const call = async () => {
 		await GetRequest('category').then((resp) => {
-			setCategories(resp.data.data);
+			if (typeof resp !== 'undefined') {
+				setCategories(resp.data.data);
+				setIsLoading(false);
+			}
 		});
 	};
 	useEffect(() => {
 		call();
-		setIsLoading(false);
 	}, []);
 	return (
 		<>
@@ -23,7 +25,6 @@ const CategoryView = () => {
 			) : (
 				categories.map((category) => {
 					const { description, dateCreated, title, id } = category;
-					console.log(id);
 					return (
 						<CategroyCard
 							description={description}

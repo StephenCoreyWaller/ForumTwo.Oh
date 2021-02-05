@@ -6,7 +6,15 @@ const Login = () => {
 	const { loginWithRedirect } = useAuth0();
 
 	return (
-		<Button primary basic onClick={() => loginWithRedirect()}>
+		<Button
+			primary
+			basic
+			onClick={() =>
+				loginWithRedirect({
+					redirectUri: window.location.origin,
+				})
+			}
+		>
 			Login
 		</Button>
 	);
